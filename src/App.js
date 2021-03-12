@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import { Route, Switch } from "react-router-dom"
+import { Layout } from "./hoc/Layout"
+import { Quiz } from "./containers"
+import { Auth } from "./containers"
+import { QuizList } from "./containers"
+import { QuizCreator } from "./containers"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Layout>
+			<Switch>
+				<Route path="/auth" component={Auth}></Route>
+				<Route path="/quiz-creator" component={QuizCreator}></Route>
+				<Route path="/quiz/:id" component={Quiz}></Route>
+				<Route path="/" component={QuizList}></Route>
+			</Switch>
+		</Layout>
+	)
 }
 
-export default App;
+export default App
