@@ -39,9 +39,41 @@ export default class Auth extends Component {
 		},
 	}
 
-	loginHandler = () => {}
+	loginHandler = async () => {
+		const authData = {
+			email: this.state.formControls.email.value,
+			password: this.state.formControls.password.value,
+			returnSecureToken: true,
+		}
+		try {
+			const response = await fetch(
+				"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB2Tivr4BYnlLKVuZS_MLjr7XePdXGJ8V4",
+				{ method: "POST", body: JSON.stringify(authData) },
+			)
+			const responseData = await response.json()
+			console.log(responseData)
+		} catch (e) {
+			console.log(e)
+		}
+	}
 
-	registerHandler = async () => {}
+	registerHandler = async () => {
+		const authData = {
+			email: this.state.formControls.email.value,
+			password: this.state.formControls.password.value,
+			returnSecureToken: true,
+		}
+		try {
+			const response = await fetch(
+				"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB2Tivr4BYnlLKVuZS_MLjr7XePdXGJ8V4",
+				{ method: "POST", body: JSON.stringify(authData) },
+			)
+			const responseData = await response.json()
+			console.log(responseData)
+		} catch (e) {
+			console.log(e)
+		}
+	}
 
 	submitHandler = event => {
 		event.preventDefault()
